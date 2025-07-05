@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuff Mangos - Premium Mango Products</title>
+    <style>
+        :root {
+            --primary-color: #FFA500;
+            --secondary-color: #228B22;
+            --accent-color: #FF4500;
+            --light-color: #FFF8DC;
+            --dark-color: #333;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .tagline {
+            font-style: italic;
+            margin-top: 0;
+        }
+        
+        nav {
+            background-color: var(--secondary-color);
+            padding: 0.5rem;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        nav li {
+            margin: 0 1rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            background-color: var(--primary-color);
+            border-radius: 5px;
+        }
+        
+        .hero {
+            background-image: url('https://images.unsplash.com/photo-1553279768-865429fa0078?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.4);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+        
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .product-image {
+            height: 200px;
+            background-color: var(--light-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-name {
+            font-size: 1.3rem;
+            margin-top: 0;
+            color: var(--secondary-color);
+        }
+        
+        .product-price {
+            font-weight: bold;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+        
+        .about {
+            background-color: var(--light-color);
+            padding: 4rem 0;
+        }
+        
+        .testimonials {
+            background-color: white;
+            padding: 4rem 0;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background-color: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            text-align: right;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+        
+        .social-icons {
+            margin: 1rem 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            .hero {
+                height: 50vh;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="logo">Tuff Mangos</h1>
+        <p class="tagline">The toughest mangos with the sweetest hearts</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Premium Mangos for Discerning Tastes</h2>
+            <p>Grown with care, harvested with passion, delivered with perfection. Experience the Tuff Mangos difference today.</p>
+            <a href="#products" class="btn">Shop Now</a>
+        </div>
+    </section>
+    
+    <section id="products" class="container">
+        <h2 class="section-title">Our Mango Selection</h2>
+        <div class="products">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1605020420620-20c943cc4669?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Alphonso Mango">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Alphonso Gold</h3>
+                    <p>The king of mangos with rich, creamy texture and heavenly aroma.</p>
+                    <p class="product-price">$3.99 each</p>
+                    <a href="#" class="btn">Add to Cart</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1553279768-865429fa0078?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Honey Mango">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Honey Kiss</h3>
+                    <p>Super sweet with minimal fiber, perfect for smoothies and desserts.</p>
+                    <p class="product-price">$2.99 each</p>
+                    <a href="#" class="btn">Add to Cart</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1553279768-865429fa0078?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Kent Mango">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Kent Classic</h3>
+                    <p>Juicy and flavorful with a perfect balance of sweet and tart.</p>
+                    <p class="product-price">$2.49 each</p>
+                    <a href="#" class="btn">Add to Cart</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Mango Gift Box">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Tuff Box</h3>
+                    <p>Our premium selection of 12 mangos, perfect for gifting.</p>
+                    <p class="product-price">$29.99</p>
+                    <a href="#" class="btn">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Our Story</h2>
+            <div class="about-content">
+                <p>Founded in 2010, Tuff Mangos began as a small family farm in Florida with a passion for growing the highest quality mangos. Our name comes from our unique growing process that makes our mangos "tough" on the outside - able to withstand shipping while maintaining perfect ripeness - but incredibly sweet and tender on the inside.</p>
+                
+                <p>Today, we work with sustainable farms across the tropics to bring you the best mango varieties from around the world. Our rigorous quality standards ensure that every Tuff Mango meets our high expectations for flavor, texture, and appearance.</p>
+                
+                <p>We're proud to be a certified B Corporation, committed to ethical sourcing, fair wages, and environmental sustainability in all aspects of our business.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"I've never tasted mangos this good! The Alphonso Gold is worth every penny. Tuff Mangos has ruined store-bought mangos for me forever."</p>
+                    <p class="testimonial-author">- Sarah J., Miami</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The Tuff Box makes an incredible gift. My clients are always impressed when they receive this - it's become my go-to corporate gift."</p>
+                    <p class="testimonial-author">- Michael T., New York</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"As a chef, I'm extremely particular about my ingredients. Tuff Mangos consistently delivers the quality I need for my restaurant's signature dishes."</p>
+                    <p class="testimonial-author">- Chef Elena R., Chicago</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="container">
+        <h2 class="section-title">Contact Me</h2>
+        <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+            <p>Have questions about our products or want to place a wholesale order? We'd love to hear from you!</p>
+            <p><strong>📞 Call/Text:</strong> <a href="tel:+14802332856">1+(480) 233-2856</a></p>
+            <p><strong>💬 WhatsApp:</strong> <a href="https://wa.me/14805262205">(480) 526-2205</a> | <a href="mailto:eduorgx@gmail.com?subject=WhatsApp Contact Request">Email for WhatsApp</a></p>
+            <p><strong>📧 Email:</strong> <a href="mailto:eduorgx@gmail.com">eduorgx@gmail.com</a></p>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-links">
+            <a href="#">Home</a>
+            <a href="#products">Products</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <a href="#">Shipping Policy</a>
+            <a href="#">Privacy Policy</a>
+        </div>
+        
+        <div class="social-icons">
+            <a href="#" aria-label="Facebook">📘</a>
+            <a href="#" aria-label="Instagram">📷</a>
+            <a href="#" aria-label="Twitter">🐦</a>
+        </div>
+        
+        <p>&copy; 2025 SmartAI - kocer Mangos. All rights reserved.</p>
+    </footer>
+</body>
+</html>
