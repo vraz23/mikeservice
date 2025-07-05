@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartAI Site Builder Pro</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CodeMirror CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/material-darker.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/eclipse.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/fold/foldgutter.min.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <img src="RobotIcon.jpg" alt="Robot Icon" class="robot-icon">
+        <span>SmartAI Builder Pro</span>
+      </div>
+      <div class="nav-toggle" id="navToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="nav-menu" id="navMenu">
+        <a href="#" class="nav-item active" data-action="dashboard"><i class="fas fa-home"></i> Dashboard</a>
+        <a href="#" class="nav-item" data-action="about"><i class="fas fa-user"></i> About</a>
+        <a href="#" class="nav-item" data-action="settings"><i class="fas fa-cog"></i> Settings</a>
+        <a href="#" class="nav-item" data-action="help"><i class="fas fa-question-circle"></i> Help</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        <img src="RobotIcon.jpg" alt="Robot Icon" class="robot-icon">
+        AI-Powered Website Builder
+      </h1>
+      <p class="hero-subtitle">Create stunning websites with the power of artificial intelligence. Just describe what you want, and watch it come to life.</p>
+    </div>
+  </div>
+
+  <div class="main-container">
+    <div class="sidebar">
+      <div class="panel">
+        <h3><i class="fas fa-edit"></i> Create</h3>
+        <div class="input-group">
+          <label for="userPrompt">Describe your website</label>
+          <textarea id="userPrompt" placeholder="Describe the main structure and content of your website...
+
+Examples:
+• A modern portfolio website for a graphic designer with dark theme, hero section, project gallery, about page, and contact form
+• An e-commerce landing page for organic skincare products with product showcase, testimonials, and shopping cart
+• A restaurant website with hero image, menu section, photo gallery, location info, reservation system, and chef bio
+• A SaaS product landing page with hero section, features grid, pricing tables, customer testimonials, and trial signup
+• A personal blog with clean minimal design, article listings, author bio, and newsletter subscription
+• A fitness gym website with class schedules, trainer profiles, membership plans, and facility tour"></textarea>
+          
+          <div class="prompt-refinement">
+            <label for="refinementPrompt">Refinement & Additional Requirements</label>
+            <textarea id="refinementPrompt" placeholder="Add specific styling, colors, features, or modifications...
+
+Examples:
+• Use a dark purple and gold color scheme with gradients
+• Add smooth scrolling animations and hover effects
+• Include a newsletter signup form in the footer
+• Make it mobile-first responsive design with touch-friendly buttons
+• Add social media integration and sharing buttons
+• Include advanced features like search, filters, or interactive elements
+• Specify typography preferences (fonts, sizes, spacing)
+• Request specific layouts or component arrangements"></textarea>
+          </div>
+
+          <div class="prompt-status">
+            <span class="status-text">
+              <i class="fas fa-info-circle"></i>
+              <span id="promptStatusText">Ready to create - enter your prompts above</span>
+            </span>
+          </div>
+          
+          <div class="prompt-suggestions">
+            <small>💡 <strong>Multi-Prompt Tips:</strong> Use the main prompt for overall structure and content. Use refinement for specific styling, colors, animations, and technical requirements. Both prompts are combined for generation, giving you precise control over every aspect of your website.</small>
+          </div>
+          
+          <div class="quick-prompts">
+            <span class="quick-prompt-label">Quick start:</span>
+            <button type="button" class="quick-prompt-btn" data-prompt="Create a modern portfolio website for a creative professional with a hero section, project gallery, about section, and contact form. Use a clean minimal design with subtle animations." data-refinement="Use a dark theme with purple accents, add smooth scroll effects, include a skills section with progress bars, and make it fully responsive.">Portfolio</button>
+            <button type="button" class="quick-prompt-btn" data-prompt="Build a business landing page for a tech startup with hero section, features grid, testimonials, pricing table, and contact form. Use a modern blue and white color scheme." data-refinement="Add gradient backgrounds, include customer logos section, add animated counters for statistics, and include a live chat widget.">Business</button>
+            <button type="button" class="quick-prompt-btn" data-prompt="Design a restaurant website with hero image, menu section, photo gallery, location info, and reservation form. Use warm colors and elegant typography." data-refinement="Include online ordering system, add image carousel for food photos, use earthy brown and gold colors, and add chef's special section.">Restaurant</button>
+            <button type="button" class="quick-prompt-btn" data-prompt="Create an e-commerce product landing page with product showcase, features, customer reviews, pricing, and buy now section. Use a clean modern design." data-refinement="Add product image zoom functionality, include size/color selectors, add related products section, and implement trust badges.">E-commerce</button>
+          </div>
+          
+          <div class="prompt-actions">
+            <button type="button" class="btn btn-outline btn-sm" data-action="combine-prompts" title="Combine main and refinement prompts (Ctrl+Shift+J)">
+              <i class="fas fa-layer-group"></i>
+              Combine Prompts
+            </button>
+            <button type="button" class="btn btn-outline btn-sm" data-action="clear-prompts" title="Clear all prompts (Ctrl+Shift+K)">
+              <i class="fas fa-eraser"></i>
+              Clear All
+            </button>
+            <button type="button" class="btn btn-outline btn-sm" data-action="save-prompt-template" title="Save current prompts as template">
+              <i class="fas fa-bookmark"></i>
+              Save Template
+            </button>
+          </div>
+        </div>
+        <div class="button-group">
+          <button id="generateBtn" class="btn btn-primary">
+            <i class="fas fa-wand-magic-sparkles"></i>
+            Generate Website
+          </button>
+          <button class="btn btn-secondary" data-action="download">
+            <i class="fas fa-download"></i>
+            Download
+          </button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3><i class="fas fa-save"></i> Projects</h3>
+        <div class="input-group">
+          <label for="savedPages">Saved Projects</label>
+          <select id="savedPages">
+            <option value="">-- Select a project --</option>
+          </select>
+        </div>
+        <div class="button-group">
+          <button class="btn btn-outline" data-action="save">
+            <i class="fas fa-save"></i>
+            Save Project
+          </button>
+          <button class="btn btn-danger" data-action="delete">
+            <i class="fas fa-trash"></i>
+            Delete
+          </button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3><i class="fas fa-key"></i> Settings</h3>
+        <div class="setting-item">
+          <span>API Status</span>
+          <span id="apiStatus" class="status-indicator">Not configured</span>
+        </div>
+        <button class="btn btn-warning" data-action="clear-api">
+          <i class="fas fa-key"></i>
+          Clear API Key
+        </button>
+      </div>
+    </div>
+
+    <div class="content-area">
+      <div class="preview-section">
+        <div class="section-header">
+          <h3><i class="fas fa-eye"></i> Live Preview</h3>
+          <div class="preview-actions">
+            <button class="btn btn-sm" data-action="refresh">
+              <i class="fas fa-sync"></i>
+              Refresh
+            </button>
+            <button class="btn btn-sm" data-action="fullscreen">
+              <i class="fas fa-expand"></i>
+              Fullscreen
+            </button>
+          </div>
+        </div>
+        <div class="preview-container">
+          <iframe id="preview"></iframe>
+        </div>
+      </div>
+
+      <div class="editor-section">
+        <div class="section-header">
+          <h3><i class="fas fa-code"></i> HTML Editor</h3>
+          <div class="editor-actions">
+            <button class="btn btn-sm" data-action="undo" title="Undo (Ctrl+Z)">
+              <i class="fas fa-undo"></i>
+              Undo
+            </button>
+            <button class="btn btn-sm" data-action="redo" title="Redo (Ctrl+Y)">
+              <i class="fas fa-redo"></i>
+              Redo
+            </button>
+            <button class="btn btn-sm" data-action="format">
+              <i class="fas fa-indent"></i>
+              Format
+            </button>
+            <button class="btn btn-sm" data-action="copy">
+              <i class="fas fa-copy"></i>
+              Copy
+            </button>
+            <button class="btn btn-sm" data-action="toggle-theme">
+              <i class="fas fa-palette"></i>
+              Theme
+            </button>
+            <button class="btn btn-sm" data-action="toggle-wrap">
+              <i class="fas fa-text-width"></i>
+              Wrap
+            </button>
+            <button class="btn btn-sm" data-action="test-preview">
+              <i class="fas fa-vial"></i>
+              Test
+            </button>
+          </div>
+        </div>
+        <div id="htmlEditorContainer">
+          <textarea id="htmlOutput" placeholder="Generated HTML will appear here for live editing..."></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 SmartAI Builder Pro. Powered by AI technology.</p>
+    </div>
+  </footer>
+
+  <!-- About Modal -->
+  <div id="aboutModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2><i class="fas fa-user-circle"></i> About the Developer</h2>
+        <button class="modal-close" data-action="close-about">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="developer-profile">
+          <div class="profile-image">
+            <img src="JKPicture.png" alt="John Kocer" class="profile-photo">
+          </div>
+          <div class="profile-info">
+            <h3>John Kocer</h3>
+            <p class="title">Director of Software Engineering & R&D</p>
+            <p class="company">SmartAI | AI R&D</p>
+            <p class="location"><i class="fas fa-map-marker-alt"></i> Phoenix, AZ, USA</p>
+            <blockquote class="motto">
+              "Building the Future of AI, One Line of Code at a Time."
+            </blockquote>
+          </div>
+        </div>
+        
+        <div class="connect-section">
+          <h4><i class="fas fa-network-wired"></i> Connect with me:</h4>
+          <div class="social-links">
+            <a href="#" class="social-link twitter" title="Follow on X (Twitter)">
+              <i class="fab fa-twitter"></i>
+              <span>X (Twitter)</span>
+            </a>
+            <a href="#" class="social-link amazon" title="View Amazon Profile">
+              <i class="fab fa-amazon"></i>
+              <span>Amazon</span>
+            </a>
+            <a href="#" class="social-link linkedin" title="Connect on LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+              <span>LinkedIn</span>
+            </a>
+            <a href="#" class="social-link csharp" title="C# Corner Profile">
+              <i class="fas fa-code"></i>
+              <span>C# Corner</span>
+            </a>
+          </div>
+        </div>
+        
+        <div class="about-project">
+          <h4><i class="fas fa-rocket"></i> About SmartAI Builder Pro</h4>
+          <p>This AI-powered website builder represents the cutting edge of artificial intelligence and web development. Built with modern technologies and a passion for innovation, it empowers users to create stunning websites through natural language prompts.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS3</span>
+            <span class="tech-tag">OpenAI API</span>
+            <span class="tech-tag">CodeMirror</span>
+            <span class="tech-tag">AI/ML</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-action="close-about">
+          <i class="fas fa-times"></i>
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-spinner">
+      <i class="fas fa-robot fa-spin"></i>
+      <p>AI is creating your website...</p>
+    </div>
+  </div>
+
+  <!-- CodeMirror JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/xml/xml.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/css/css.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/htmlmixed/htmlmixed.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/matchbrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/closetag.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/fold/foldcode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/fold/foldgutter.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/fold/xml-fold.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/selection/active-line.min.js"></script>
+
+  <script src="script.js"></script>
+</body>
+</html>
